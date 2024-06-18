@@ -12,20 +12,20 @@ export default function Nav({
         <Fragment>
             <nav className={className} {...props}>
                 <img src={Logo} alt="logo" className="h-4" />
-                <div className="lg:flex hidden items-center gap-8">
-                    <button className="text-sm font-public text-grayish_blue">
+                <div className="lg:flex hidden items-center gap-8 h-full">
+                    <button className="text-sm font-public text-grayish_blue transition hover:text-black border-b-2 border-transparent hover:border-b-lime_green h-full">
                         Home
                     </button>
-                    <button className="text-sm font-public text-grayish_blue">
+                    <button className="text-sm font-public text-grayish_blue transition hover:text-black border-b-2 border-transparent hover:border-b-lime_green h-full">
                         About
                     </button>
-                    <button className="text-sm font-public text-grayish_blue">
+                    <button className="text-sm font-public text-grayish_blue transition hover:text-black border-b-2 border-transparent hover:border-b-lime_green h-full">
                         Contact
                     </button>
-                    <button className="text-sm font-public text-grayish_blue">
+                    <button className="text-sm font-public text-grayish_blue transition hover:text-black border-b-2 border-transparent hover:border-b-lime_green h-full">
                         Blog
                     </button>
-                    <button className="text-sm font-public text-grayish_blue">
+                    <button className="text-sm font-public text-grayish_blue transition hover:text-black border-b-2 border-transparent hover:border-b-lime_green h-full">
                         Careers
                     </button>
                 </div>
