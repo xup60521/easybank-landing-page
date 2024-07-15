@@ -2,6 +2,7 @@ import Currency from "/images/image-currency.jpg";
 import Restaurant from "/images/image-restaurant.jpg";
 import Plane from "/images/image-plane.jpg";
 import Confetti from "/images/image-confetti.jpg";
+import { motion } from "framer-motion";
 
 const articles = [
     {
@@ -47,10 +48,14 @@ export default function Article(props: React.HTMLAttributes<HTMLDivElement>) {
                 Latest Articles
             </h2>
             <div className="lg:grid lg:grid-cols-4 gap-6 py-8">
-                {articles.map((d) => (
-                    <div
+                {articles.map((d, index) => (
+                    <motion.div
                         className="rounded-md overflow-hidden bg-white mb-4 lg:pb-0 pb-6"
                         key={d.title}
+                        initial={{ y: 20, opacity: 0 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{duration: 1, delay: 0.1 * index, type: "spring"}}
+                        viewport={{ once: true }}
                     >
                         <img
                             src={d.image}
@@ -58,7 +63,9 @@ export default function Article(props: React.HTMLAttributes<HTMLDivElement>) {
                             className="w-full aspect-[4/3] object-cover"
                         />
                         <div className="p-4">
-                            <span className="font-public text-xs text-grayish_blue">{d.author}</span>
+                            <span className="font-public text-xs text-grayish_blue">
+                                {d.author}
+                            </span>
                             <h3 className="font-public text-dark_blue leading-6 py-3 transition hover:text-lime_green">
                                 {d.title}
                             </h3>
@@ -66,7 +73,7 @@ export default function Article(props: React.HTMLAttributes<HTMLDivElement>) {
                                 {d.description}
                             </p>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </div>

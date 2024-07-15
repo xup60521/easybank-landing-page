@@ -2,6 +2,7 @@ import Banking from "/images/icon-online.svg";
 import Budgeting from "/images/icon-budgeting.svg";
 import Onboarding from "/images/icon-onboarding.svg";
 import API from "/images/icon-api.svg";
+import { motion } from "framer-motion";
 
 const data = [
     {
@@ -48,16 +49,31 @@ export default function Why({
                 financial hub. Control your finances like never before.
             </p>
             <div className="lg:grid lg:grid-cols-4 gap-4 py-8">
-                {data.map((d) => (
-                    <div className="flex flex-col lg:items-start items-center lg:pb-0 pb-12" key={d.title}>
+                {data.map((d, index) => (
+                    <motion.div
+                        className="flex flex-col lg:items-start items-center lg:pb-0 pb-12"
+                        key={d.title}
+                        initial={{ y: 20, opacity: 0 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{
+                            duration: 1,
+                            delay: 0.1 * index,
+                            type: "spring",
+                        }}
+                        viewport={{ once: true }}
+                    >
                         <img
                             src={d.image}
                             alt={d.title + " image"}
                             className="size-16"
                         />
-                        <h3 className="font-public text-dark_blue text-xl lg:py-6 py-4">{d.title}</h3>
-                        <p className="font-public text-grayish_blue lg:text-left text-center lg:px-0 px-4">{d.description}</p>
-                    </div>
+                        <h3 className="font-public text-dark_blue text-xl lg:py-6 py-4">
+                            {d.title}
+                        </h3>
+                        <p className="font-public text-grayish_blue lg:text-left text-center lg:px-0 px-4">
+                            {d.description}
+                        </p>
+                    </motion.div>
                 ))}
             </div>
         </div>
