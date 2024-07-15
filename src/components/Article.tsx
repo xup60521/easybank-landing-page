@@ -47,26 +47,32 @@ export default function Article(props: React.HTMLAttributes<HTMLDivElement>) {
             <h2 className="text-3xl font-public text-dark_blue lg:text-left text-center font-medium">
                 Latest Articles
             </h2>
-            <div className="lg:grid lg:grid-cols-4 gap-6 py-8">
+            <div className="lg:grid lg:grid-cols-4 gap-6 py-8 ">
                 {articles.map((d, index) => (
                     <motion.div
-                        className="rounded-md overflow-hidden bg-white mb-4 lg:pb-0 pb-6"
+                        className="rounded-md overflow-hidden bg-white group mb-4 lg:pb-0 pb-6"
                         key={d.title}
                         initial={{ y: 20, opacity: 0 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{duration: 1, delay: 0.1 * index, type: "spring"}}
+                        transition={{
+                            duration: 1,
+                            delay: 0.1 * index,
+                            type: "spring",
+                        }}
                         viewport={{ once: true }}
                     >
-                        <img
-                            src={d.image}
-                            alt={d.title + " image"}
-                            className="w-full aspect-[4/3] object-cover"
-                        />
+                        <div className="w-full aspect-[4/3] overflow-hidden">
+                            <img
+                                src={d.image}
+                                alt={d.title + " image"}
+                                className="w-full aspect-[4/3] object-cover  group-hover:scale-110 transition duration-500"
+                            />
+                        </div>
                         <div className="p-4">
                             <span className="font-public text-xs text-grayish_blue">
                                 {d.author}
                             </span>
-                            <h3 className="font-public text-dark_blue leading-6 py-3 transition hover:text-lime_green">
+                            <h3 className="font-public text-dark_blue leading-6 py-3 transition cursor-pointer hover:text-lime_green">
                                 {d.title}
                             </h3>
                             <p className="font-public text-grayish_blue text-xs">
